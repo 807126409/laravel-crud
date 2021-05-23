@@ -1,5 +1,6 @@
 <?php 
 namespace App\Repositories;
+use Illuminate\Http\Request;
 
 interface TaskRepositoryInterface
 {
@@ -12,4 +13,6 @@ interface TaskRepositoryInterface
     public function delete($id);
 
     public function show($id);
+
+    public function filter(Request $request);
 }

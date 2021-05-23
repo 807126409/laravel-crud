@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class TaskRepository implements TaskRepositoryInterface
 {
@@ -63,5 +64,13 @@ class TaskRepository implements TaskRepositoryInterface
     public function with($relations)
     {
         return $this->model->with($relations);
+    }
+
+    public function filter(Request $request)
+    {
+        
+        return $this->model->when($request->sort, function ($query) use ($request) {
+                    return $query->orderBy($request->sort, 'asc');
+                })->paginate(10);
     }
 }

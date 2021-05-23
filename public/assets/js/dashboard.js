@@ -8,7 +8,7 @@
     });
     $('body').on('click', '.editRecord', function () {
       var record_id = $(this).data('id');
-      $.get("{{ url('tasks/') }}" +'/' + record_id, function (data) {
+      $.get("tasks" +'/' + record_id, function (data) {
           $('#modelHeading').html("Edit Record");
           $('#saveBtn').val("edit-record");
           $('#ajaxModel').modal('show');
@@ -24,7 +24,7 @@
         if($(this).val() == 'edit-record'){
             $.ajax({
                 data: $('#recordForm').serialize(),
-                url: "{{ url('tasks/') }}"+'/'+$('#record_id').val(),
+                url: "tasks"+'/'+$('#record_id').val(),
                 type: "PUT",
                 dataType: 'json',
                 success: function (data) {
@@ -44,7 +44,7 @@
         }else{
             $.ajax({
                 data: $('#recordForm').serialize(),
-                url: "{{ route('tasks.store') }}",
+                url: "/tasks",
                 type: "POST",
                 dataType: 'json',
                 success: function (data) {
@@ -78,7 +78,7 @@
             data:{
                 "_token": "{{ csrf_token() }}"
             },
-            url: "{{ url('tasks') }}"+'/'+record_id,
+            url: "tasks"+'/'+record_id,
             success: function (data) {
                 $.toast('success', 'Record deleted Successfully.');
                 $(this).remove();
@@ -166,21 +166,11 @@
   
 })(window, jQuery);
 $(document).ready(function() {
-  $('select.changeStatus').change(function(){
+  $('select#slct').change(function(){
     // You can access the value of your select field using the .val() method
-    alert('Select field value has changed to' + $('select.changeStatus').val());
-   // You can perform an ajax request using the .ajax() method
-   $.ajax({
-       type: 'GET',
-      url: 'changeStatus.php', // This is the url that will be requested
-      // This is an object of values that will be passed as GET variables and 
-      // available inside changeStatus.php as $_GET['selectFieldValue'] etc...
-      data: {selectFieldValue: $('select.changeStatus').val()},
-      // This is what to do once a successful request has been completed - if 
-      // you want to do nothing then simply don't include it. But I suggest you 
-      // add something so that your use knows the db has been updated
-      success: function(html){ Do something with the response },
-      dataType: 'html'
-    });
-
+    alert('Select field value has changed to' + $('select#slct').val());
+   // You can perform an ajax request using the .ajax() method 
+    $(".sorting").attr("action", 'tasks?sort='+$('select#slct').val());
+    $(".sorting").submit();
+  });
 });

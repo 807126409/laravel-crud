@@ -3,34 +3,31 @@
 @section('content')
 <div class="container">
     <div id="toasts"></div>
+    <div style="display: flex;text-align: center;margin-top: 10px;margin-bottom: 10px;">
     <h1>Laravel Task</h1>
+    <a class="btn btn-danger" style="margin-left: auto" href="{{route('logout')}}"> Logout</a>
+    </div>
     <div style="display: flex;text-align: center;margin-bottom: 50px;">
-        <a class="btn btn-success" href="javascript:void(0)" id="createNewRecord"> Create</a>
-        <form method="GET" action="{{ url('tasks') }}">
-            <div class="input-group">
-                <input type="text" class="input-sm form-control" name="keywords" placeholder="Search" value="{{ request()->keywords }}">
-                <span class="input-group-btn">
-                    <input class="btn btn-sm btn-default" type="submit" value="Go!">
-                </span>
+        <a class="btn btn-success" style="margin-right: 50px" href="javascript:void(0)" id="createNewRecord"> Create</a>
+        <form class="sorting" action="{{url('tasks?')}}" method="GET">
+            <div class="select" style="margin-left: auto">
+                <select name="sort" id="slct">
+                    <option selected disabled>Sort</option>
+                    <option value="id">ID</option>
+                    <option value="type">Type</option>
+                    <option value="name">Name</option>
+                    <option value="magento_id">Magento ID</option>
+                </select>
+
             </div>
         </form>
-        
-        <div class="select" style="margin-left: auto">
-            <select name="sort" id="slct">
-                <option selected disabled>Sort</option>
-                <option value="id">ID</option>
-                <option value="type">Type</option>
-                <option value="name">Name</option>
-                <option value="magento_id">Magento ID</option>
-            </select>
-        </div>
     </div>
     <table class="table table-bordered data-table">
         <thead>
             <tr>
-                <th class="sorting" data-sorting_type="asc" data-column_name="id" style="cursor: pointer">Type<span id="id_icon"></span></th>
+                <th>Type<span id="id_icon"></span></th>
                 <th>Name</th>
-                <th class="sorting" data-sorting_type="asc" data-column_name="post_title" style="cursor: pointer">magento_id<span id="post_title_icon"></th>
+                <th>magento_id<span id="post_title_icon"></th>
                 <th width="300px">Action</th>
             </tr>
         </thead>

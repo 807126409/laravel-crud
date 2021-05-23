@@ -23,10 +23,11 @@ class TaskController extends Controller
 
    public function index(Request $request)
    {  
-      if($request->sort && $request->keywords){
-        dd($request);
-      } 
-      $records = $this->model->all();
+      if($request->sort){
+        $records = $this->model->filter($request);
+      }else{
+        $records = $this->model->all();
+      }
       return View::make('task.index', compact('records'));
    }
 
@@ -44,7 +45,7 @@ class TaskController extends Controller
    /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Book  $book
+     * @param  \App\FcstmrType  $records
      * @return \Illuminate\Http\Response
      */
     public function edit($id)

@@ -15,32 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 
 // --------------------------Task Resource Controller------------------------------
-Route::resource('tasks', 'TaskController');
+
+Route::group(['middleware' => ['auth']], function () {
+    /*Route::get('/tasks','TaskController@index');
+	Route::post('/tasks','TaskController@store');
+	Route::get('/tasks/{id}','TaskController@show');
+	Route::get('/tasks/{id}','TaskController@edit');
+	Route::put('/tasks/{id}','TaskController@update');
+	Route::delete('/tasks/{id}','TaskController@destroy');*/
+	Route::resource('tasks', 'TaskController');
+});
 //Route::get('/dashboard','DashboardController@index')->name('dashboard');
 // --------------------------authentication Form------------------------------
-Route::get('/', array('uses' => 'Auth\AuthenticationController@showAuthenticationForm'));
+Route::get('/login', array('uses' => 'Auth\AuthenticationController@showAuthenticationForm'))->name('login');
 // -----------------------------login-----------------------------------------
 Route::post('/login', array('uses' => 'Auth\AuthenticationController@authenticate'));
 // ------------------------------register-------------------------------------
 Route::post('/register', array('uses' => 'Auth\AuthenticationController@storeUser'));
 // ------------------------------logout-------------------------------------
-Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'Auth\AuthenticationController@logout')->name('logout');
 
-// -----------------------------login-----------------------------------------
-// Route::get('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
-// Route::post('/login', 'App\Http\Controllers\Auth\LoginController@authenticate');
-
-// // ------------------------------register---------------------------------------
-// Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@register')->name('register');
-// Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@storeUser')->name('register');
-
-// -----------------------------forget password ------------------------------
-Route::get('forget-password', 'App\Http\Controllers\Auth\ForgotPasswordController@getEmail')->name('forget-password');
-Route::post('forget-password', 'App\Http\Controllers\Auth\ForgotPasswordController@postEmail')->name('forget-password');
-
-Route::get('reset-password/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@getPassword');
-Route::post('reset-password', 'App\Http\Controllers\Auth\ResetPasswordController@updatePassword');
-
-//Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
