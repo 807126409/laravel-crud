@@ -13,16 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', function () {
+	if (Auth::check()) {
+        return redirect('/tasks');
+    }
+    return redirect('/login');
+});
 // --------------------------Task Resource Controller------------------------------
 
 Route::group(['middleware' => ['auth']], function () {
-    /*Route::get('/tasks','TaskController@index');
-	Route::post('/tasks','TaskController@store');
-	Route::get('/tasks/{id}','TaskController@show');
-	Route::get('/tasks/{id}','TaskController@edit');
-	Route::put('/tasks/{id}','TaskController@update');
-	Route::delete('/tasks/{id}','TaskController@destroy');*/
 	Route::resource('tasks', 'TaskController');
 });
 //Route::get('/dashboard','DashboardController@index')->name('dashboard');

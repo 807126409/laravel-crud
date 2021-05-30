@@ -168,8 +168,8 @@
 $(document).ready(function() {
   $('select#slct').change(function(){
     // You can access the value of your select field using the .val() method
-    alert('Select field value has changed to' + $('select#slct').val());
-   // You can perform an ajax request using the .ajax() method 
+    //alert('Select field value has changed to' + $('select#slct').val());
+    // You can perform an ajax request using the .ajax() method 
     $(".sorting").attr("action", 'tasks?sort='+$('select#slct').val());
     $(".sorting").submit();
   });

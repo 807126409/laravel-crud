@@ -27,6 +27,7 @@ class AuthenticationController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    private $redirectTo = 'login';
     /**
      * Display the authentication Form.
      *
@@ -73,7 +74,7 @@ class AuthenticationController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('task');
+        return redirect('/');
     }
     public function logout() {
       Auth::logout();

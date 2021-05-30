@@ -25,7 +25,8 @@
     <table class="table table-bordered data-table">
         <thead>
             <tr>
-                <th>Type<span id="id_icon"></span></th>
+                <th>ID</th>
+                <th>Type</th>
                 <th>Name</th>
                 <th>magento_id<span id="post_title_icon"></th>
                 <th width="300px">Action</th>
@@ -34,6 +35,7 @@
         <tbody class='record-table-body'>
             @foreach($records as $record)
             <tr class="row-{{ $record->id }}">
+                <td>{{ $record->id }}</td>
                 <td>{{ $record->type }}</td>
                 <td>{{ $record->NAME }}</td>
                 <td>{{  $record->magento_id}}</td>
