@@ -15,8 +15,8 @@ class CreateFcstmrTypeTable extends Migration
     {
         /*This is the initial migration file before starting the task of update table, 
         it will first check if a table exist then don't create a new table*/
-        if (!Schema::hasTable('fcstmr_type')) {
-            Schema::create('fcstmr_type', function (Blueprint $table) {
+        if (!Schema::hasTable('FCSTMR_Type')) {
+            Schema::create('FCSTMR_Type', function (Blueprint $table) {
                 $table->engine = 'InnoDB';
                 $table->char('ID',2)->nullable();
                 $table->char('NAME', 30)->nullable();
@@ -32,6 +32,6 @@ class CreateFcstmrTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fcstmr_type');
+        Schema::dropIfExists('FCSTMR_Type');
     }
 }

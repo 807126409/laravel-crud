@@ -14,8 +14,8 @@ class AddIdToFcstmrTypeTable extends Migration
     public function up()
     {
         /*add increment ID column in fcstmr_type*/
-        if(Schema::hasTable('fcstmr_type')){   
-            Schema::table('fcstmr_type', function (Blueprint $table) {
+        if(Schema::hasTable('FCSTMR_Type')){   
+            Schema::table('FCSTMR_Type', function (Blueprint $table) {
                 $table->unsignedInteger('id',true)->first();
             });
         }
@@ -28,8 +28,8 @@ class AddIdToFcstmrTypeTable extends Migration
      */
     public function down()
     {
-        if(Schema::hasTable('fcstmr_type') && Schema::hasColumn('fcstmr_type','ID')){   
-            Schema::table('fcstmr_type', function (Blueprint $table) {
+        if(Schema::hasTable('FCSTMR_Type') && Schema::hasColumn('FCSTMR_Type','ID')){   
+            Schema::table('FCSTMR_Type', function (Blueprint $table) {
                     $table->dropColumn('id');
             });
         }

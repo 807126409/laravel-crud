@@ -17,8 +17,8 @@ class UpdateIdFromFcstmrTypeTable extends Migration
         First, update ID to column to type because 
         in the next migration, we have to add id column and we also don't want to lose our data.
         */
-        if(Schema::hasTable('fcstmr_type') && Schema::hasColumn('fcstmr_type','ID')){   
-            Schema::table('fcstmr_type', function (Blueprint $table) {
+        if(Schema::hasTable('FCSTMR_Type') && Schema::hasColumn('FCSTMR_Type','ID')){   
+            Schema::table('FCSTMR_Type', function (Blueprint $table) {
                 $table->renameColumn('ID', 'type');
             });
         }

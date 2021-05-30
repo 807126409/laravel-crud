@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class FcstmrType extends Model
 {
     //
-    protected $table = 'fcstmr_type';
+    protected $table = 'FCSTMR_Type';
     /**
      * The attributes that are mass assignable.
      *
