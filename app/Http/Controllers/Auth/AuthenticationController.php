@@ -74,7 +74,10 @@ class AuthenticationController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('/');
+        return redirect('/')->with([
+            'type' => 'success',
+            'message' => 'Registered Successfully.'
+        ]);;
     }
     public function logout() {
       Auth::logout();

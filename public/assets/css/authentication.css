@@ -338,3 +338,8 @@ div.rememberme {
 #login {
   transform: translateX(-160px);
 }
+
+span.help-block {
+    color: red;
+    font-size: 12px;
+}
