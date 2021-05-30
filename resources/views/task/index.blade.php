@@ -42,11 +42,6 @@
                 <td><a href="javascript:void(0)" data-toggle="tooltip"  data-id="{{$record->id}}" data-original-title="Edit" class="edit btn btn-primary btn-sm editRecord">Edit</a><a href="javascript:void(0)" data-toggle="tooltip"  data-id="{{$record->id}}" data-original-title="Delete" class="btn btn-danger btn-sm deleteRecord">Delete</a></td>
             </tr>
             @endforeach
-            <tr>
-               <td colspan="3" align="center">
-                {!! $records->links() !!}
-               </td>
-            </tr>
         </tbody>
     </table>
     <input type="hidden" name="hidden_page" id="hidden_page" value="1" />

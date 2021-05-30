@@ -19,7 +19,7 @@ class TaskRepository implements TaskRepositoryInterface
     public function all()
     {
         
-        return $this->model->paginate(10);
+        return $this->model->get();
     }
 
     // create a new record in the database
@@ -71,6 +71,6 @@ class TaskRepository implements TaskRepositoryInterface
         
         return $this->model->when($request->sort, function ($query) use ($request) {
                     return $query->orderBy($request->sort, 'asc');
-                })->paginate(10);
+                })->get();
     }
 }

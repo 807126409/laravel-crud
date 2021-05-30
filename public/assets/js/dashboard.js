@@ -31,9 +31,10 @@
                     $.toast('success', 'Record Updated Successfully.');
                     $('#recordForm').trigger("reset");
                     $('#ajaxModel').modal('hide');         
-                    $('.row-'+data.id).find('td:eq(0)').html(data.type);     
-                    $('.row-'+data.id).find('td:eq(1)').html(data.NAME);     
-                    $('.row-'+data.id).find('td:eq(2)').html(data.magento_id);     
+                    $('.row-'+data.id).find('td:eq(0)').html(data.id);     
+                    $('.row-'+data.id).find('td:eq(1)').html(data.type);     
+                    $('.row-'+data.id).find('td:eq(2)').html(data.NAME);     
+                    $('.row-'+data.id).find('td:eq(3)').html(data.magento_id);     
                 },
                 error: function (data) {
                     console.log('Error:', data);
@@ -52,6 +53,7 @@
                     $('#recordForm').trigger("reset");
                     $('#ajaxModel').modal('hide');
                     var html = "<tr class='row-'"+data.id+">";
+                    html += '<td>'+data.id+'</td>';
                     html += '<td>'+data.type+'</td>';
                     html += '<td>'+data.name+'</td>';
                     html += '<td>'+data.magento_id+'</td>';
